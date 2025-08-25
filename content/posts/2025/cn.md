@@ -4,7 +4,7 @@ description: "深入探讨在 Tailwind CSS 项目中 `clsx` 和 `tailwind-merge`
 date: 2025-07-29
 updated: 2025-07-29
 type: story
-categories: ["技术分享"]
+categories: ["前端"]
 tags: ["前端", "tailwindcss", "clsx", "cn", "TypeScript", "nextjs", "react"]
 ---
 

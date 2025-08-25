@@ -47,16 +47,16 @@ export default defineAppConfig({
 				text: '个人主页',
 				url: blogConfig.author.homepage,
 			},
-			// {
-			// 	icon: 'ri:qq-line',
-			// 	text: '交流群: 169994096',
-			// 	url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd',
-			// },
-			// {
-			// 	icon: 'ph:github-logo-bold',
-			// 	text: 'GitHub: L33Z22L11',
-			// 	url: 'https://github.com/L33Z22L11',
-			// },
+			{
+				icon: 'ri:qq-line',
+				text: '582783985',
+				url: 'https://qm.qq.com/q/dnSwjTSCg8',
+			},
+			{
+				icon: 'ph:github-logo-bold',
+				text: 'GitHub: shenlye',
+				url: 'https://github.com/shenlye',
+			},
 			// { icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
 			// {
 			// 	icon: 'ph:subway-bold',
@@ -154,7 +154,7 @@ export default defineAppConfig({
 
 	stats: {
 		/** 归档页面每年标题对应的年龄 */
-		birthYear: 2003,
+		birthYear: 2007,
 		/** blog-stats widget 的预置文本 */
 		wordCount: '约10万',
 	},
