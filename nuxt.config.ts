@@ -182,4 +182,10 @@ ${packageJson.homepage}
 		url: blogConfig.url,
 		defaultLocale: blogConfig.language,
 	},
+
+	sitemap: {
+		sources: [
+			'/api/sitemap/articles',
+		],
+	},
 })
