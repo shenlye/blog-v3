@@ -3,7 +3,6 @@ import process from 'node:process'
 import ci from 'ci-info'
 import blogConfig from './blog.config'
 import packageJson from './package.json'
-import redirectList from './redirects.json'
 
 // 此处配置无需修改
 export default defineNuxtConfig({
@@ -62,11 +61,6 @@ export default defineNuxtConfig({
 
 	// @keep-sorted
 	routeRules: {
-		...Object.entries(redirectList)
-			.reduce<NitroConfig['routeRules']>((acc, [from, to]) => {
-				acc![from] = { redirect: { to, statusCode: 308 } }
-				return acc
-			}, {}),
 		'/api/stats': { prerender: true, headers: { 'Content-Type': 'application/json' } },
 		'/atom.xml': { prerender: true, headers: { 'Content-Type': 'application/xml' } },
 		'/favicon.ico': { redirect: { to: blogConfig.favicon } },
@@ -132,14 +126,6 @@ export default defineNuxtConfig({
 	},
 
 	hooks: {
-		'ready': () => {
-			console.info(`
-================================
-${packageJson.name} ${packageJson.version}
-${packageJson.homepage}
-================================
-`)
-		},
 		'content:file:afterParse': (ctx) => {
 			const permalink = ctx.content.permalink as string
 			if (permalink) {

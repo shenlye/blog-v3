@@ -5,8 +5,8 @@ const props = defineProps({
 	error: Object as () => NuxtError,
 })
 
-const layoutStore = useLayoutStore()
-layoutStore.setAside(['blog-log'])
+// const layoutStore = useLayoutStore()
+// layoutStore.setAside(['blog-log'])
 
 const errorStack = removeHtmlTags(props.error?.stack)
 
