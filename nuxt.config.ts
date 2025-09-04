@@ -20,9 +20,11 @@ export default defineNuxtConfig({
 				{ rel: 'alternate', type: 'application/atom+xml', href: '/atom.xml' },
 				// { rel: 'preconnect', href: blogConfig.twikoo.preload },
 				{ rel: 'stylesheet', href: 'https://lib.baomitu.com/KaTeX/0.16.9/katex.min.css' },
-				// 思源黑体 "Noto Sans SC", 思源宋体 "Noto Serif SC", "JetBrains Mono"
+				// "InterVariable", "Inter", "InterDisplay"
+				{ rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' },
+				// "JetBrains Mono", 思源黑体 "Noto Sans SC", 思源宋体 "Noto Serif SC"
 				{ rel: 'preconnect', href: 'https://fonts.gstatic.cn', crossorigin: '' },
-				{ rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&display=swap' },
+				{ rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&display=swap' },
 				// 小米字体 "MiSans"
 				{ rel: 'stylesheet', href: 'https://cdn-font.hyperos.mi.com/font/css?family=MiSans:100,200,300,400,450,500,600,650,700,900:Chinese_Simplify,Latin&display=swap' },
 			],
@@ -49,6 +51,7 @@ export default defineNuxtConfig({
 		'@/assets/css/animation.scss',
 		'@/assets/css/article.scss',
 		'@/assets/css/color.scss',
+		'@/assets/css/font.scss',
 		'@/assets/css/main.scss',
 		'@/assets/css/reusable.scss',
 	],
@@ -144,7 +147,7 @@ ${packageJson.homepage}
 				return
 			}
 			// 在 URL 中隐藏文件路由自动生成的 /posts 路径前缀
-			if (blogConfig.content.hidePostPrefix) {
+			if (blogConfig.article.hidePostPrefix) {
 				const realPath = ctx.content.path as string
 				ctx.content.path = realPath.replace(/^\/posts/, '')
 			}
@@ -174,7 +177,7 @@ ${packageJson.homepage}
 
 	robots: {
 		disableNuxtContentIntegration: true,
-		disallow: blogConfig.content.robotsNotIndex,
+		disallow: blogConfig.article.robotsNotIndex,
 	},
 
 	site: {

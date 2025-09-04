@@ -1,5 +1,5 @@
 import { defineCollection, z } from '@nuxt/content'
-import { asSeoCollection } from '@nuxtjs/seo/content'
+import { asSitemapCollection } from '@nuxtjs/sitemap/content'
 import blogConfig from './blog.config'
 
 const articleSchema = z.object({
@@ -7,7 +7,7 @@ const articleSchema = z.object({
 	description: z.string().optional(),
 	date: z.string().optional(),
 	updated: z.string().optional(),
-	categories: z.array(z.string()).default([blogConfig.content.defaultCategory]),
+	categories: z.array(z.string()).default([blogConfig.defaultCategory]),
 	tags: z.array(z.string()).default([]),
 	type: z.enum(['tech', 'story']).optional(),
 
@@ -29,7 +29,7 @@ const articleSchema = z.object({
 })
 
 export const collections = {
-	content: defineCollection(asSeoCollection({
+	content: defineCollection(asSitemapCollection({
 		source: '**',
 		type: 'page',
 		schema: articleSchema,
