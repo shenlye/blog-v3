@@ -1,4 +1,5 @@
 import { defineCollection, z } from '@nuxt/content'
+import { asSeoCollection } from '@nuxtjs/seo/content'
 import blogConfig from './blog.config'
 
 const articleSchema = z.object({
@@ -28,9 +29,9 @@ const articleSchema = z.object({
 })
 
 export const collections = {
-	content: defineCollection({
+	content: defineCollection(asSeoCollection({
 		source: '**',
 		type: 'page',
 		schema: articleSchema,
-	}),
+	})),
 }

@@ -6,6 +6,7 @@
     "source.fixAll.eslint": "always",
     "source.fixAll.stylelint": "always"
   },
+  "editor.formatOnSave": false,
   "errorLens.fontSize": ".8em",
   "errorLens.messageBackgroundMode": "message",
   "errorLens.messageMaxChars": 50,
