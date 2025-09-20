@@ -6,7 +6,6 @@ updated: 2025-08-27
 type: story
 categories: []
 tags: []
-image: "https://img.shenley.top/74360d39-4786-47b4-ba73-d70481f599ad.png"
 ---
 
 有些道理，没人教，那真的只能靠自己去理解，今天想到了，记录一下吧
