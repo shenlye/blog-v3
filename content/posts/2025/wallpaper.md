@@ -1,8 +1,8 @@
 ---
 title: "WallpaperEngine壁纸推荐"
 description: "WallpaperEngine是一个免费的壁纸引擎，支持Windows、macOS和Linux。它可以让你在桌面背景上播放视频、图片和动画，并且支持自定义壁纸。"
-date: 2025-8-31 00:00:00
-updated: 2025-8-31 00:00:00
+date: 2025-08-31 00:00:00
+updated: 2025-08-31 00:00:00
 type: story
 categories: []
 tags: []

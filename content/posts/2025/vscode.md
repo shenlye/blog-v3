@@ -1,8 +1,8 @@
 ---
 title: "我的Visual Studio Code配置和插件推荐"
 description: "包含我的用户配置文件和部分vscode插件"
-date: 2025-8-31 00:00:00
-updated: 2025-8-31 00:00:00
+date: 2025-08-31 00:00:00
+updated: 2025-08-31 00:00:00
 type: story
 categories: []
 tags: []
