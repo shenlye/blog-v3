@@ -2,14 +2,24 @@ import type ArticleProps from '~/types/article'
 import type { ArticleOrderType } from '~/types/article'
 import { alphabetical } from 'radash'
 
-export function useArticleIndex(path = 'posts/%') {
+export function useArticleIndex(path = 'posts/%', showHidden: MaybeRefOrGetter<boolean> = false) {
 	return useAsyncData(
-		`index_${path}`,
-		() => queryCollection('content')
-			.where('stem', 'LIKE', path)
-			.select('categories', 'date', 'description', 'image', 'path', 'readingTime', 'recommend', 'title', 'type', 'updated')
-			.all(),
-		{ default: () => [] }, // 不返回 undefined
+		() => `index_${path}_${toValue(showHidden)}`,
+		() => {
+			let query = queryCollection('content')
+				.where('stem', 'LIKE', path)
+				.select('categories', 'date', 'description', 'hidden', 'image', 'path', 'readingTime', 'recommend', 'title', 'type', 'updated')
+			
+			if (!toValue(showHidden)) {
+				query = query.where('hidden', '!=', true)
+			}
+			
+			return query.all()
+		},
+		{ 
+			default: () => [], // 不返回 undefined
+			watch: [() => toValue(showHidden)]
+		}
 	)
 }
 

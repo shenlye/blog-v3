@@ -6,6 +6,7 @@ updated: 2025-08-27
 type: story
 categories: []
 tags: []
+hidden: true
 ---
 
 有些道理，没人教，那真的只能靠自己去理解，今天想到了，记录一下吧

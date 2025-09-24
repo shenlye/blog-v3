@@ -6,6 +6,7 @@ updated: 2025-07-31 12:00:00
 type: story
 categories: [日常]
 tags: [自我怀疑]
+hidden: true
 ---
 
 我反复问自己，为什么要写博客？

@@ -25,7 +25,6 @@ else {
 	// const event = useRequestEvent()
 	// event && setResponseStatus(event, 404)
 	route.meta.title = '404'
-	layoutStore.setAside(['blog-log'])
 }
 </script>
 
@@ -33,6 +32,9 @@ else {
 <template v-if="post">
 	<PostHeader v-bind="post" />
 	<PostExcerpt v-if="excerpt" :excerpt />
+	<Alert type="warning" icon="ph:eye-slash-bold" title="隐藏文章" v-if="post.hidden">
+	<p>这是一篇隐藏文章，内容不适合所有人，出于一些原因不在文章列表中显示。</p>
+</Alert>
 	<!-- 使用 float-in 动画会导致搜索跳转不准确 -->
 	<ContentRenderer
 		class="article"

@@ -6,6 +6,7 @@ updated: 2025-04-29
 type: story
 categories: [日常]
 tags: ["考试", "生活", "回忆","经历"]
+hidden : true
 ---
 
 ## 关于技能考试

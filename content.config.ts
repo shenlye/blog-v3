@@ -18,6 +18,7 @@ const articleSchema = z.object({
 		link: z.string().optional(),
 	})).optional(),
 	draft: z.boolean().default(false),
+	hidden: z.boolean().default(false),
 	url: z.string().optional(),
 
 	readingTime: z.object({
