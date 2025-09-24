@@ -9,9 +9,11 @@ useSeoMeta({
 const birthYear = appConfig.component.stats.birthYear
 
 const layoutStore = useLayoutStore()
-layoutStore.setAside(['blog-stats', 'blog-log'])
+layoutStore.setAside(['blog-stats'])
 
-const { data: listRaw } = await useArticleIndex()
+const hiddenToggleRef = ref()
+const showHidden = computed(() => hiddenToggleRef.value?.showHidden)
+const { data: listRaw } = await useArticleIndex('posts/%', showHidden)
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted)
 
@@ -35,6 +37,7 @@ const yearlyWordCount = computed(() => {
 
 <template>
 <div class="archive">
+	<WidgetHiddenToggle ref="hiddenToggleRef" />
 	<ZOrderToggle
 		v-model:is-ascending="isAscending"
 		v-model:sort-order="sortOrder"
@@ -136,4 +139,6 @@ const yearlyWordCount = computed(() => {
 		column-gap: 0.5em;
 	}
 }
+
+
 </style>

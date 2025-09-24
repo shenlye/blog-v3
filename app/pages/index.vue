@@ -12,7 +12,8 @@ layoutStore.setAside(['blog-stats', 'blog-tech', 'comm-group'])
 
 // BUG 若其他页面和 index.vue 共用同一数据源，其 payload 会被置空
 // 此处数据源不采用默认参数，以防归档页面刷新空白
-const showHidden = ref(false)
+const hiddenToggleRef = ref()
+const showHidden = computed(() => hiddenToggleRef.value?.showHidden)
 const { data: listRaw } = await useArticleIndex('posts%', showHidden)
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted, { bindQuery: 'category' })
@@ -46,17 +47,7 @@ const listRecommended = computed(() => sort(
 <div class="post-list">
 	<div class="toolbar">
 		<div>
-			
-			<label class="hidden-toggle">
-				<input 
-					v-model="showHidden" 
-					type="checkbox"
-				>
-				<span class="checkbox-label">
-					<Icon name="ph:eye-slash-bold" />
-					显示隐藏文章
-				</span>
-			</label>
+			<WidgetHiddenToggle ref="hiddenToggleRef" />
 		</div>
 
 		<ZOrderToggle
@@ -106,30 +97,5 @@ const listRecommended = computed(() => sort(
 	margin: 1rem;
 }
 
-.hidden-toggle {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-	cursor: pointer;
-	opacity: 0.7;
-	transition: opacity 0.2s;
-	font-size: 0.9rem;
 
-	&:hover {
-		opacity: 1;
-	}
-
-	input[type="checkbox"] {
-		margin: 0;
-		cursor: pointer;
-	}
-
-	.checkbox-label {
-		display: flex;
-		align-items: center;
-		gap: 0.3rem;
-		cursor: pointer;
-		user-select: none;
-	}
-}
 </style>
