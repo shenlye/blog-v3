@@ -13,7 +13,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 </script>
 
 <template>
-<ZRawLink class="article-card card">
+<ZRawLink class="article-card card gradient-card">
 	<NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" />
 	<article>
 		<h2 class="article-title text-creative">
@@ -70,7 +70,6 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	container-type: inline-size;
 	position: relative;
 	margin: 1rem 0;
-	border-radius: 0.8rem;
 	color: var(--c-text);
 	animation: float-in 0.2s var(--delay) backwards;
 

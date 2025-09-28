@@ -139,6 +139,4 @@ const yearlyWordCount = computed(() => {
 		column-gap: 0.5em;
 	}
 }
-
-
 </style>

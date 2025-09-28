@@ -4,22 +4,31 @@ const layoutStore = useLayoutStore()
 const searchStore = useSearchStore()
 
 const { word } = storeToRefs(searchStore)
-const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' : 'Ctrl+K')
+const keycut = computed(() =>
+	navigator?.userAgent.includes('Mac OS') ? '⌘K' : 'Ctrl+K',
+)
 </script>
 
 <template>
 <Transition>
 	<!-- FIXME: 评估是否能公用 bgmask 减少冗余 -->
-	<div v-if="layoutStore.isOpen('sidebar')" id="z-sidebar-bgmask" @click="layoutStore.toggle('sidebar')" />
+	<div
+		v-if="layoutStore.isOpen('sidebar')"
+		id="z-sidebar-bgmask"
+		@click="layoutStore.toggle('sidebar')"
+	/>
 </Transition>
 <!-- 此处不能使用 Transition，因为半宽屏状态始终显示 -->
 <aside id="z-sidebar" :class="{ show: layoutStore.isOpen('sidebar') }">
 	<ZhiluHeader class="sidebar-header" to="/" />
 
 	<nav class="sidebar-nav scrollcheck-y">
-		<div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
+		<div
+			class="search-btn sidebar-nav-item gradient-card"
+			@click="layoutStore.toggle('search')"
+		>
 			<Icon name="ph:magnifying-glass-bold" />
-			<span class="nav-text">{{ word || '搜索' }}</span>
+			<span class="nav-text">{{ word || "搜索" }}</span>
 			<span class="keycut widescreen-only">{{ keycut }}</span>
 		</div>
 
@@ -30,10 +39,18 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 
 			<menu>
 				<li v-for="(item, itemIndex) in group.items" :key="itemIndex">
-					<ZRawLink :to="item.url" class="sidebar-nav-item" @click="layoutStore.toggle('sidebar')">
+					<ZRawLink
+						:to="item.url"
+						class="sidebar-nav-item"
+						@click="layoutStore.toggle('sidebar')"
+					>
 						<Icon :name="item.icon" />
 						<span class="nav-text">{{ item.text }}</span>
-						<Icon v-if="isExtLink(item.url)" class="external-tip" name="ph:arrow-up-right" />
+						<Icon
+							v-if="isExtLink(item.url)"
+							class="external-tip"
+							name="ph:arrow-up-right"
+						/>
 					</ZRawLink>
 				</li>
 			</menu>
@@ -41,7 +58,10 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 	</nav>
 
 	<footer class="sidebar-footer">
-		<ThemeToggle />
+		<div class="theme-controls">
+			<ThemeToggle />
+			<ColorPicker />
+		</div>
 		<ZIconNavList :list="appConfig.footer.iconNav" />
 	</footer>
 </aside>
@@ -177,5 +197,11 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 	font-size: 0.8em;
 	text-align: center;
 	color: var(--c-text-2);
+}
+
+.theme-controls {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 </style>

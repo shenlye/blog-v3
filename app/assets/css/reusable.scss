@@ -4,13 +4,12 @@
 	overflow: hidden;
 	overflow: clip;
 	border-radius: 0.5em;
-	box-shadow: 0 0.1em 0.2em var(--ld-shadow);
 	background-color: var(--ld-bg-card);
 	transition: all 0.2s;
 
 	&:hover {
 		box-shadow: 0 0.5em 1em var(--ld-shadow);
-		transform: translateY(-2px);
+		scale: 1.03;
 	}
 }
 
@@ -18,15 +17,15 @@
 	position: relative;
 	border-radius: 0.5rem;
 	background: no-repeat 100% / 400%;
-	background-image: linear-gradient(45deg, var(--c-accent), var(--c-primary-soft) 40%, transparent 50%);
-	transition: all 0.5s;
+	background-image: linear-gradient(45deg, var(--c-primary), var(--c-primary-soft) 40%, transparent 50%);
+	transition: all 0.3s;
 	z-index: 0;
 
 	&::before {
 		content: "";
 		position: absolute;
-		inset: 2px;
-		border-radius: calc(0.5rem - 2px);
+		inset: 1px;
+		border-radius: calc(0.5rem - 1px);
 		transition: all 1s;
 		z-index: -1;
 	}
