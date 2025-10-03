@@ -14,8 +14,9 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 
 <template>
 <ZRawLink class="article-card card">
+	<div class="card-hover-overlay" />
 	<NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" />
-	<article>
+	<article class="article-content">
 		<h2 class="article-title text-creative">
 			{{ title }}
 		</h2>
@@ -34,16 +35,6 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 				{{ getPostDate(date) }}
 			</time>
 
-			<time
-				v-if="showAllDate || useUpdated"
-				:class="{ 'use-updated': useUpdated }"
-				:datetime="getIsoDatetime(updated)"
-				:title="getLocaleDatetime(updated)"
-			>
-				<Icon name="ph:calendar-plus-bold" />
-				{{ getPostDate(props.updated) }}
-			</time>
-
 			<!-- 带查询参数时会水合错误 -->
 			<ClientOnly>
 				<span
@@ -55,17 +46,38 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 					{{ categoryLabel }}
 				</span>
 			</ClientOnly>
-
-			<span v-if="readingTime?.words" class="article-words">
-				<Icon name="ph:paragraph-bold" />
-				{{ formatNumber(readingTime?.words) }}字
-			</span>
 		</div>
 	</article>
 </ZRawLink>
 </template>
 
 <style lang="scss" scoped>
+.article-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+}
+
+.card-hover-overlay {
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 0.8rem;
+	transition: all 0.2s;
+	z-index: -1;
+
+	.article-card:hover & {
+		opacity: 1;
+		box-shadow: inset 0 1px 0 0 rgb(148 163 184 / 10%);
+		background-color: var(--ld-bg-card);
+	}
+}
+
 .article-card {
 	container-type: inline-size;
 	position: relative;
@@ -75,7 +87,6 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	animation: float-in 0.2s var(--delay) backwards;
 
 	> article {
-		display: grid;
 		gap: 0.5rem;
 		padding: 1rem;
 	}
@@ -84,9 +95,12 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 .article-info {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: end;
 	gap: 0.5em clamp(1em, 5%, 1.5em);
+	width: 100%;
 	font-size: 0.8em;
-	color: var(--c-text-2);
+	text-align: center;
+	color: var(--c-text-1);
 
 	&:empty {
 		display: none;
@@ -98,13 +112,24 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 }
 
 .article-title {
-	font-size: 1.2em;
+	font-size: 1.1em;
+	text-align: center;
 	color: var(--c-text);
 }
 
 .article-descrption {
+	display: -webkit-box;
+	overflow: hidden;
+	max-height: calc(1.4em * 3);
+	padding: 0 1em;
 	font-size: 0.9em;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	line-height: 1.4;
+	text-align: left;
+	text-overflow: ellipsis;
 	color: var(--c-text-2);
+	-webkit-box-orient: vertical;
 }
 
 .article-category {
@@ -113,13 +138,12 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 
 .article-cover {
 	position: absolute;
-	opacity: 0.8;
+	opacity: 0.6;
 	top: 0;
 	right: 0;
-	width: min(320px, 50%);
+	width: 100%;
 	height: 100%;
 	margin: 0;
-	mask-image: linear-gradient(to right, transparent, #FFF 50%);
 	transition: all 0.2s;
 	object-fit: cover;
 
@@ -129,8 +153,6 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 
 	& + article {
 		position: relative;
-		width: 60%;
-		text-shadow: 0 0 0.5rem var(--ld-bg-card), 0 0 1rem var(--ld-bg-card);
 	}
 
 	@mixin cover-narrow {
@@ -145,6 +167,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 
 		& + article {
 			width: auto;
+			background-color: var(--ld-bg-card);
 		}
 	}
 
