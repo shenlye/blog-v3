@@ -96,4 +96,6 @@ const listRecommended = computed(() => sort(
 .post-list {
 	margin: 1rem;
 }
+
+
 </style>
