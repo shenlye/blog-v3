@@ -97,6 +97,7 @@ export default defineNuxtConfig({
 		'@nuxt/image',
 		'@nuxtjs/color-mode',
 		'@nuxtjs/seo',
+		'@nuxtjs/supabase',
 		'@pinia/nuxt',
 		'@vueuse/nuxt',
 		'unplugin-yaml/nuxt',

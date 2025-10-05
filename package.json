@@ -24,6 +24,7 @@
     "@nuxt/image": "catalog:ui",
     "@nuxtjs/color-mode": "catalog:ui",
     "@nuxtjs/seo": "catalog:content",
+    "@nuxtjs/supabase": "^2.0.0",
     "@pinia/nuxt": "catalog:util",
     "@shikijs/colorized-brackets": "catalog:content",
     "@shikijs/transformers": "catalog:content",

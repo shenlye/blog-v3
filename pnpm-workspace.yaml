@@ -70,3 +70,5 @@ patchedDependencies:
   vue-tippy: patches/vue-tippy.patch
 
 shamefullyHoist: true
+catalog:
+  '@nuxtjs/supabase': ^2.0.0
