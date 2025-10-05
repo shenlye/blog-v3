@@ -70,6 +70,7 @@ onMounted(async () => {
 	:class="{ collapsed: collapsible && isCollapsed, collapsible }"
 	:style="{ '--collapsed-rows': appConfig.component.codeblock.collapsedRows }"
 >
+	<ZCornerBorders />
 	<figcaption>
 		<span v-if="filename" class="filename">
 			<Icon :name="icon" /> {{ filename }}
@@ -117,9 +118,8 @@ onMounted(async () => {
 
 	position: relative;
 	overflow: clip;
-	border-radius: 0.5em;
 	background-color: var(--c-bg-2);
-	font-size: 0.8125rem;
+	font-size: 0.75rem;
 	line-height: var(--line-height);
 
 	&.collapsed {

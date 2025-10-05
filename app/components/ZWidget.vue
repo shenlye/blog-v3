@@ -18,6 +18,7 @@ defineProps<{
 
 	<div class="widget-body" :class="{ 'widget-card': card, 'with-bg': bgImg }">
 		<NuxtImg v-if="bgImg" class="bg-img" :class="{ 'bg-right': bgRight }" :src="bgImg" alt="" />
+		<ZCornerBorders />
 		<slot />
 	</div>
 </section>
@@ -84,8 +85,9 @@ defineProps<{
 	}
 
 	&.widget-card {
+		position: relative;
 		padding: 0.5rem 0.8rem;
-		border-radius: 0.8rem;
+		border: var(--c-border) solid 1px;
 		background-color: var(--c-bg-2);
 
 		:deep(p) {

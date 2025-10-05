@@ -9,23 +9,46 @@ export default defineNuxtConfig({
 	app: {
 		head: {
 			meta: [
-				{ name: 'author', content: [blogConfig.author.name, blogConfig.author.email].filter(Boolean).join(', ') },
+				{
+					name: 'author',
+					content: [blogConfig.author.name, blogConfig.author.email]
+						.filter(Boolean)
+						.join(', '),
+				},
 				// 此处为元数据的生成器标识，不建议修改
-				{ 'name': 'generator', 'content': packageJson.name, 'data-github-repo': packageJson.homepage, 'data-version': packageJson.version },
+				{
+					'name': 'generator',
+					'content': packageJson.name,
+					'data-github-repo': packageJson.homepage,
+					'data-version': packageJson.version,
+				},
 				{ name: 'mobile-web-app-capable', content: 'yes' },
 			],
 			link: [
 				{ rel: 'icon', href: blogConfig.favicon },
 				{ rel: 'alternate', type: 'application/atom+xml', href: '/atom.xml' },
 				// { rel: 'preconnect', href: blogConfig.twikoo.preload },
-				{ rel: 'stylesheet', href: 'https://lib.baomitu.com/KaTeX/0.16.9/katex.min.css' },
+				{
+					rel: 'stylesheet',
+					href: 'https://lib.baomitu.com/KaTeX/0.16.9/katex.min.css',
+				},
 				// "InterVariable", "Inter", "InterDisplay"
 				{ rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' },
 				// "JetBrains Mono", 思源黑体 "Noto Sans SC", 思源宋体 "Noto Serif SC"
-				{ rel: 'preconnect', href: 'https://fonts.gstatic.cn', crossorigin: '' },
-				{ rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&display=swap' },
+				{
+					rel: 'preconnect',
+					href: 'https://fonts.gstatic.cn',
+					crossorigin: '',
+				},
+				{
+					rel: 'stylesheet',
+					href: 'https://fonts.googleapis.cn/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&display=swap',
+				},
 				// 小米字体 "MiSans"
-				{ rel: 'stylesheet', href: 'https://cdn-font.hyperos.mi.com/font/css?family=MiSans:100,200,300,400,450,500,600,650,700,900:Chinese_Simplify,Latin&display=swap' },
+				{
+					rel: 'stylesheet',
+					href: 'https://cdn-font.hyperos.mi.com/font/css?family=MiSans:100,200,300,400,450,500,600,650,700,900:Chinese_Simplify,Latin&display=swap',
+				},
 			],
 			templateParams: {
 				separator: '|',
@@ -61,10 +84,19 @@ export default defineNuxtConfig({
 
 	// @keep-sorted
 	routeRules: {
-		'/api/stats': { prerender: true, headers: { 'Content-Type': 'application/json' } },
-		'/atom.xml': { prerender: true, headers: { 'Content-Type': 'application/xml' } },
+		'/api/stats': {
+			prerender: true,
+			headers: { 'Content-Type': 'application/json' },
+		},
+		'/atom.xml': {
+			prerender: true,
+			headers: { 'Content-Type': 'application/xml' },
+		},
 		'/favicon.ico': { redirect: { to: blogConfig.favicon } },
-		'/zhilu.opml': { prerender: true, headers: { 'Content-Type': 'application/xml' } },
+		'/zhilu.opml': {
+			prerender: true,
+			headers: { 'Content-Type': 'application/xml' },
+		},
 	},
 
 	runtimeConfig: {
@@ -142,9 +174,7 @@ export default defineNuxtConfig({
 	},
 
 	icon: {
-		customCollections: [
-			{ prefix: 'zi', dir: './app/assets/icons' },
-		],
+		customCollections: [{ prefix: 'zi', dir: './app/assets/icons' }],
 	},
 
 	image: {
@@ -171,5 +201,8 @@ export default defineNuxtConfig({
 		name: blogConfig.title,
 		url: blogConfig.url,
 		defaultLocale: blogConfig.language,
+	},
+	supabase: {
+		redirect: false,
 	},
 })

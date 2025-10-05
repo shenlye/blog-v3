@@ -9,6 +9,7 @@ const appConfig = useAppConfig()
 
 <template>
 <div class="post-footer">
+	<ZCornerBorders />
 	<section v-if="references" class="reference">
 		<div id="references" class="title text-creative">
 			参考链接
@@ -44,9 +45,9 @@ const appConfig = useAppConfig()
 
 <style lang="scss" scoped>
 .post-footer {
+	position: relative;
 	margin: 2rem 0.5rem;
 	border: 1px solid var(--c-border);
-	border-radius: 1rem;
 	background-color: var(--c-bg-2);
 }
 

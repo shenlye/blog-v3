@@ -78,10 +78,30 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 
 	&:hover {
 		border-top-color: var(--c-primary);
+		box-shadow: 0 0.5em 1em var(--ld-shadow);
+
+		&::before {
+			content: "";
+			position: absolute;
+			opacity: 0.5;
+			top: -4px;
+			right: 0;
+			left: 0;
+			height: 2em;
+			background-color: var(--c-primary);
+			filter: blur(24px);
+			z-index: -1;
+		}
+
+		.article-category {
+			background-color: var(--c-primary);
+			color: var(--c-bg);
+		}
 	}
 
 	> article {
-		display: grid;
+		display: flex;
+		flex-direction: column;
 		gap: 0.5rem;
 		padding: 1rem;
 	}
@@ -90,7 +110,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 .article-info {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.5em clamp(1em, 5%, 1.5em);
+	gap: 0.5em clamp(0.8em, 5%, 1em);
 	order: -1;
 	font-size: 0.7em;
 	color: var(--c-text-2);
@@ -114,8 +134,25 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 }
 
 .article-title {
+	display: inline-block;
+	position: relative;
+	width: fit-content;
+	max-width: 100%;
 	font-size: 1.1em;
 	color: var(--c-text);
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 6px;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: radial-gradient(circle, var(--c-text-3) 0.1px, transparent 0.5px);
+		background-size: 4px 4px;
+		pointer-events: none;
+		z-index: -1;
+	}
 }
 
 .article-descrption {
@@ -124,6 +161,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 }
 
 .article-category {
+	padding: 1px 5px;
 	color: var(--cg-color);
 }
 

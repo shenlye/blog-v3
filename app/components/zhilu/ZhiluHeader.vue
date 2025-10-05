@@ -5,6 +5,14 @@ const appConfig = useAppConfig()
 <template>
 <ZRawLink class="zhilu-header">
 	<div v-if="appConfig.header.showTitle" class="zhilu-text">
+		<div class="header-1">
+			<div class="title-1">
+				> Save Point
+			</div>
+			<div>
+				个人网站
+			</div>
+		</div>
 		<div class="header-title">
 			<span
 				v-for="(char, charIndex) in appConfig.title"
@@ -22,6 +30,18 @@ const appConfig = useAppConfig()
 </template>
 
 <style lang="scss" scoped>
+.header-1 {
+	display: flex;
+
+	.title-1 {
+		margin-right: 0.5em;
+		padding: 1px 10px;
+		box-shadow: var(--c-primary) 0 0 8px;
+		background: var(--c-primary);
+		color: var(--c-bg-1);
+	}
+}
+
 .zhilu-header {
 	display: flex;
 	align-items: center;
@@ -39,6 +59,16 @@ const appConfig = useAppConfig()
 }
 
 .header-title {
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 26px 0 14px;
+		background-image: radial-gradient(circle, var(--c-text-3) 0.1px, transparent 0.5px);
+		background-size: 4px 4px;
+		pointer-events: none;
+		z-index: -1;
+	}
+
 	font-family: AlimamaFangYuanTi, "Noto Sans SC", sans-serif;
 	font-size: 1.5em;
 	font-synthesis: none;

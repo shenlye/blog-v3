@@ -74,6 +74,7 @@ function openActiveItem() {
 	<Transition name="float-in">
 		<div v-if="isOpening" id="z-search">
 			<form class="input" :class="{ searching: status === 'pending' }" @submit.prevent>
+				<ZCornerBorders color="var(--c-primary)" />
 				<Icon name="ph:magnifying-glass-bold" />
 
 				<input
@@ -145,7 +146,6 @@ function openActiveItem() {
 	width: 95%;
 	max-width: $breakpoint-mobile;
 	border: 1px solid var(--c-primary);
-	border-radius: 1em;
 	box-shadow: 0 0.5em 1em var(--ld-shadow);
 	background-color: var(--ld-bg-card);
 	transition: all var(--delay, 200);
