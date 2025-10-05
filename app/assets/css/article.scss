@@ -1,5 +1,6 @@
 .article {
 	margin: 1rem;
+	font-size: 0.9em;
 	line-height: 1.8;
 
 	p {
@@ -105,7 +106,7 @@
 			position: relative;
 			font-family: var(--font-serif);
 			font-weight: bolder;
-			text-align: center;
+			text-align: start;
 			text-wrap: balance;
 		}
 

@@ -119,9 +119,10 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 	position: relative;
 	height: 40px;
 	padding: 0 1em;
-	border: 1px solid var(--c-text-3);
+	border: 1px solid var(--c-border);
 	box-sizing: border-box;
-	background-color: var(--c-bg-2);
+	background-color: var(--c-bg-1);
+	font-size: 0.9em;
 	transition: all 0.2s;
 
 	&::after {
@@ -131,7 +132,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 		left: 0;
 		width: 15%;
 		height: 3px;
-		background-color: var(--c-text-3);
+		background-color: var(--c-border);
 		clip-path: polygon(0 1%, 100% 0%, 93% 100%, 0 100%);
 	}
 
