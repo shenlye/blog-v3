@@ -17,7 +17,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 	<ZhiluHeader class="sidebar-header" to="/" />
 
 	<nav class="sidebar-nav scrollcheck-y">
-		<div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
+		<div class="search-btn gradient-card" @click="layoutStore.toggle('search')">
 			<Icon name="ph:magnifying-glass-bold" />
 			<span class="nav-text">{{ word || '搜索' }}</span>
 			<span class="keycut widescreen-only">{{ keycut }}</span>
@@ -34,6 +34,9 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 						<Icon :name="item.icon" />
 						<span class="nav-text">{{ item.text }}</span>
 						<Icon v-if="isExtLink(item.url)" class="external-tip" name="ph:arrow-up-right" />
+						<div class="square-grid">
+							<div v-for="i in 16" :key="i" class="square" />
+						</div>
 					</ZRawLink>
 				</li>
 			</menu>
@@ -113,21 +116,51 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 	display: flex;
 	align-items: center;
 	gap: 0.5em;
-	padding: 0.5em 1em;
-	border-radius: 0.5em;
+	position: relative;
+	height: 40px;
+	padding: 0 1em;
+	border: 1px solid var(--c-text-3);
+	box-sizing: border-box;
+	background-color: var(--c-bg-2);
 	transition: all 0.2s;
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: -1px;
+		left: 0;
+		width: 15%;
+		height: 3px;
+		background-color: var(--c-text-3);
+		clip-path: polygon(0 1%, 100% 0%, 93% 100%, 0 100%);
+	}
 
 	&:hover,
 	&.router-link-active {
+		position: relative;
+		border-color: var(--c-primary);
+		border-right-color: transparent;
+		border-bottom: 4px solid var(--c-primary);
+		border-left-color: transparent;
 		background-color: var(--c-bg-soft);
 		color: var(--c-text);
-	}
 
-	&.router-link-active::after {
-		content: "⦁";
-		width: 1em;
-		text-align: center;
-		color: var(--c-text-3);
+		&::after {
+			background-color: var(--c-primary);
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			opacity: 0.3;
+			right: 0;
+			bottom: -4px;
+			left: 0;
+			height: 20px;
+			background-color: var(--c-primary);
+			filter: blur(10px);
+			z-index: -1;
+		}
 	}
 
 	.iconify {
@@ -142,10 +175,31 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 		opacity: 0.5;
 		font-size: 1em;
 	}
+
+	.square-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: repeat(4, 1fr);
+		gap: 1px;
+		position: absolute;
+		top: 8px;
+		right: 8px;
+		width: 7px;
+		height: 7px;
+	}
+
+	.square {
+		background-color: var(--c-text-3);
+		transition: background-color 0.2s ease;
+	}
 }
 
 .search-btn {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
 	margin: 1rem 0;
+	padding: 0.5em 1em;
 	outline: 1px solid var(--c-border);
 	outline-offset: -1px;
 	cursor: text;

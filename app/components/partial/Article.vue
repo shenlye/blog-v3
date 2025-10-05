@@ -67,7 +67,6 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	left: 0;
 	width: 100%;
 	height: 100%;
-	border-radius: 0.8rem;
 	transition: all 0.2s;
 	z-index: -1;
 
@@ -82,7 +81,6 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	container-type: inline-size;
 	position: relative;
 	margin: 1rem 0;
-	border-radius: 0.8rem;
 	color: var(--c-text);
 	animation: float-in 0.2s var(--delay) backwards;
 

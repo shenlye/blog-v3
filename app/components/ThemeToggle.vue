@@ -27,12 +27,10 @@ const colorMode = useColorMode()
 	margin: 0 auto;
 	padding: 2px;
 	border: 1px solid var(--c-border);
-	border-radius: 1rem;
 	background-color: var(--c-bg-2);
 
 	> button {
 		padding: 4px 1rem;
-		border-radius: 1rem;
 		transition: all 0.1s;
 
 		&:hover {
