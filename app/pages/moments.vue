@@ -86,7 +86,9 @@ onMounted(() => {
 <template>
 <div class="moments-page">
 	<div class="container">
-		<h1>动态</h1>
+		<h1 class="title">
+			动态
+		</h1>
 
 		<!-- 发布动态表单 - 仅管理员可见 -->
 		<div v-if="authStore.isAdmin" class="moment-form">
@@ -164,15 +166,26 @@ onMounted(() => {
 					:key="moment.id"
 					class="moment-item"
 				>
+					<ZCornerBorders />
 					<div class="moment-header">
-						<span class="moment-time">{{ formatTime(moment.created_at) }}</span>
-						<button
-							v-if="canDelete(moment)"
-							class="delete-btn"
-							@click="handleDelete(moment.id)"
-						>
-							删除
-						</button>
+						<div class="author-info">
+							<img
+								src="/avatar.jpg"
+								alt="头像"
+								class="avatar"
+							>
+							<span class="author-name">Shenley</span>
+						</div>
+						<div class="header-right">
+							<span class="moment-time">{{ formatTime(moment.created_at) }}</span>
+							<button
+								v-if="canDelete(moment)"
+								class="delete-btn"
+								@click="handleDelete(moment.id)"
+							>
+								删除
+							</button>
+						</div>
 					</div>
 
 					<div class="moment-content">
@@ -203,7 +216,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .moments-page {
-	max-width: 800px;
+	max-width: 40rem;
 	margin: 0 auto;
 	padding: 2rem 1rem;
 }
@@ -330,10 +343,12 @@ onMounted(() => {
 }
 
 .moment-item {
+	position: relative;
 	margin-bottom: 2rem;
 	padding: 1.5rem;
-	border: 1px solid var(--border-color);
-	border-radius: 8px;
+	border: 1px solid var(--c-border);
+	border-radius: 1px;
+	background-color: var(--c-bg-2);
 
 	.moment-header {
 		display: flex;
@@ -341,29 +356,54 @@ onMounted(() => {
 		justify-content: space-between;
 		margin-bottom: 1rem;
 
-		.moment-time {
-			font-size: 0.875rem;
-			color: var(--text-secondary);
+		.author-info {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+
+			.avatar {
+				width: 40px;
+				height: 40px;
+				border-radius: 3px;
+				object-fit: cover;
+			}
+
+			.author-name {
+				font-size: 0.95rem;
+				font-weight: 500;
+			}
 		}
 
-		.delete-btn {
-			padding: 0.25rem 0.75rem;
-			border: 1px solid var(--danger-color);
-			border-radius: 4px;
-			background: transparent;
-			font-size: 0.875rem;
-			color: var(--danger-color);
-			cursor: pointer;
+		.header-right {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
 
-			&:hover {
-				background: var(--danger-color);
-				color: white;
+			.moment-time {
+				font-size: 0.875rem;
+				color: var(--text-secondary);
+			}
+
+			.delete-btn {
+				padding: 0.25rem 0.75rem;
+				border: 1px solid var(--danger-color);
+				border-radius: 4px;
+				background: transparent;
+				font-size: 0.875rem;
+				color: var(--danger-color);
+				cursor: pointer;
+
+				&:hover {
+					background: var(--danger-color);
+					color: white;
+				}
 			}
 		}
 	}
 
 	.moment-content {
 		margin-bottom: 1rem;
+		padding-left: 52px;
 		white-space: pre-wrap;
 		word-wrap: break-word;
 	}
@@ -372,6 +412,7 @@ onMounted(() => {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		gap: 0.5rem;
+		padding-left: 52px;
 
 		img {
 			width: 100%;

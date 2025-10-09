@@ -180,3 +180,19 @@ mark {
 		to { transform: scale(1.25); }
 	}
 }
+
+.dot-matrix {
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0.5em;
+		bottom: -0.2em;
+		width: calc(100% + 20px);
+		background-image: radial-gradient(circle, var(--c-text-3) 0.1px, transparent 0.5px);
+		background-size: 4px 4px;
+		pointer-events: none;
+		z-index: -1;
+	}
+}

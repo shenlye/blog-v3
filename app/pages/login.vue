@@ -71,7 +71,9 @@ async function handleMagicLink() {
 <template>
 <div class="login-page">
 	<div class="login-container">
-		<h1>{{ isSignUp ? '注册' : '登录' }}</h1>
+		<h1 class="dot-matrix title">
+			{{ isSignUp ? '注册' : '登录' }}
+		</h1>
 
 		<form @submit.prevent="handleSubmit">
 			<div class="form-group">
@@ -106,10 +108,6 @@ async function handleMagicLink() {
 			</button>
 		</form>
 
-		<div class="divider">
-			或
-		</div>
-
 		<button
 			type="button"
 			class="magic-link-btn"
@@ -129,6 +127,22 @@ async function handleMagicLink() {
 </template>
 
 <style scoped lang="scss">
+.title {
+	display: inline-block;
+	margin-left: 10px;
+
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: -0.2em;
+		left: -10px;
+		width: 4px;
+		height: 100%;
+		border-radius: 2px;
+		background: var(--c-primary);
+	}
+}
+
 .login-page {
 	display: flex;
 	align-items: center;
@@ -171,9 +185,8 @@ async function handleMagicLink() {
 		width: 100%;
 		padding: 0.4rem 1rem;
 		border: 2px solid var(--c-border);
-		border-radius: 8px;
-		background: var(--c-bg-1);
-		font-family: inherit;
+		border-radius: 2px;
+		background: var(--c-bg-2);
 		font-size: 1rem;
 		color: var(--c-text-1);
 		transition: all 0.3s ease;
@@ -195,17 +208,9 @@ async function handleMagicLink() {
 	margin-bottom: 1rem;
 	padding: 0.875rem 1rem;
 	border-left: 4px solid #E53E3E;
-	border-radius: 8px;
 	background: linear-gradient(90deg, rgb(229 62 62 / 10%) 0%, transparent 100%);
 	font-size: 0.875rem;
 	color: #E53E3E;
-	animation: shake 0.4s ease;
-}
-
-@keyframes shake {
-	0%, 100% { transform: translateX(0); }
-	25% { transform: translateX(-8px); }
-	75% { transform: translateX(8px); }
 }
 
 .submit-btn,
@@ -213,47 +218,15 @@ async function handleMagicLink() {
 	position: relative;
 	overflow: hidden;
 	width: 100%;
+	margin-top: 1rem;
 	padding: 0.5rem 1.5rem;
 	border: none;
-	border-radius: 8px;
+	border-radius: 3px;
 	font-size: 1rem;
 	font-weight: 600;
 	letter-spacing: 0.02em;
 	transition: all 0.3s ease;
 	cursor: pointer;
-
-	&::before {
-		content: "";
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 0;
-		height: 0;
-		border-radius: 50%;
-		background: rgb(255 255 255 / 30%);
-		transform: translate(-50%, -50%);
-		transition: width 0.6s, height 0.6s;
-	}
-
-	&:active::before {
-		width: 300px;
-		height: 300px;
-	}
-
-	&:disabled {
-		opacity: 0.6;
-		transform: none !important;
-		cursor: not-allowed;
-	}
-
-	&:not(:disabled):hover {
-		box-shadow: 0 6px 20px var(--ld-shadow);
-		transform: translateY(-2px);
-	}
-
-	&:not(:disabled):active {
-		transform: translateY(0);
-	}
 }
 
 .submit-btn {
@@ -277,39 +250,6 @@ async function handleMagicLink() {
 	}
 }
 
-.divider {
-	position: relative;
-	margin: 2rem 0;
-	font-size: 0.875rem;
-	font-weight: 500;
-	text-align: center;
-	color: var(--c-text-2);
-
-	&::before,
-	&::after {
-		content: "";
-		position: absolute;
-		top: 50%;
-		width: calc(50% - 2rem);
-		height: 1px;
-		background:
-			linear-gradient(
-				to right,
-				transparent,
-				var(--c-border),
-				transparent
-			);
-	}
-
-	&::before {
-		left: 0;
-	}
-
-	&::after {
-		right: 0;
-	}
-}
-
 .toggle-mode {
 	margin-top: 2rem;
 	padding-top: 1.5rem;
@@ -329,11 +269,6 @@ async function handleMagicLink() {
 
 		&:hover {
 			background: var(--c-primary-soft);
-			transform: translateY(-1px);
-		}
-
-		&:active {
-			transform: translateY(0);
 		}
 	}
 }
