@@ -45,8 +45,7 @@ const listRecommended = computed(() => sort(
 <PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />
 
 <div class="post-list">
-	<div>暂时，等我弄完</div>
-	<!-- <div class="toolbar">
+	<div class="toolbar">
 		<div>
 			<WidgetHiddenToggle ref="hiddenToggleRef" />
 		</div>
@@ -70,7 +69,7 @@ const listRecommended = computed(() => sort(
 		/>
 	</TransitionGroup>
 
-	<ZPagination v-model="page" :total-pages /> -->
+	<ZPagination v-model="page" :total-pages />
 </div>
 </template>
 

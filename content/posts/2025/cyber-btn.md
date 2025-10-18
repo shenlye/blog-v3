@@ -1,6 +1,6 @@
 ---
 title: "超炫酷的赛博按钮和弹窗"
-description: ""
+description: "超炫酷的赛博按钮和配套弹窗，从零开始，通过具体的代码示例，深入解析如何利用 CSS 的 clip-path 创造出独特的切角几何形态，并结合 @keyframes 和 transform 打造出令人惊叹的“Glitch”故障动画"
 date: 2025-09-04
 updated: 2025-09-04
 type: story
@@ -8,10 +8,8 @@ categories: ["前端"]
 tags: []
 ---
 
-很久之前就发现了一个非常心动的效果，一路从qq追到了tg，再追到了x，最后到了codepen，感觉一定很复杂，现在看来也没什么难度。
+很久之前就发现了一个非常心动的效果，一路从QQ追到了Telegrame，再追到了X，最后到了CodePen，感觉一定很复杂，现在看来也没什么难度。
 [原链接](https://codepen.io/jh3y/pen/yyNWGNG)
-
----
 
 ## 按钮
 
@@ -19,7 +17,7 @@ tags: []
 
 ### 准备工作
 
-为了方便，用了tailwindcss（是的，我就是觉得tailwindcss的可读性很高，比跳转去看实现方便的多），可以直接用cdn引入，然后定义全局变量
+为了方便，用了tailwindcss（是的，我觉得tailwindcss的可读性很高，比跳转去看实现方便的多），可以直接用CDN引入，然后定义全局变量
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>

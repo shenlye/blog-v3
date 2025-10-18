@@ -7,9 +7,9 @@ type: story
 categories: [博客]
 tags: ["Bangumi", "前端", "Nuxt", "API", "Vue"]
 ---
-::alert
+
 作为一个完全不懂 Vue、Nuxt 和 TypeScript 的新手，我花了两天时间成功接入了 Bangumi API，实现了动漫和游戏进度的展示功能，本文基于 Nuxt 3 + Vue 3 + TypeScript 编写。
-::
+
 ## 1. 准备工作
 
 首先需要了解Bangumi API的基本用法：

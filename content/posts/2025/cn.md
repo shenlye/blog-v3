@@ -1,5 +1,5 @@
 ---
-title: "cn vs clsx：为什么在 Tailwind CSS 项目中我更推荐 cn"
+title: "cn vs clsx：在 Tailwind CSS 项目中推荐 cn"
 description: "深入探讨在 Tailwind CSS 项目中 `clsx` 和 `tailwind-merge` 的作用，并解释为什么将它们组合成 `cn` 工具函数是构建可维护、无样式冲突组件的最佳实践。"
 date: 2025-07-29
 updated: 2025-07-29

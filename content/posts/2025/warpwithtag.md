@@ -1,14 +1,14 @@
 ---
 title: "给VSCode添加使用标签包裹快捷键"
-description: "解决VSCode中标签包裹效率问题"
+description: "手动在 VSCode 里包裹 HTML 代码？教你启用 Emmet 快捷键，一行配置实现高效标签包裹。"
 date: 2025-07-23 12:00:00
-updated: 2025-07-23 12:00:00
+updated: 2025-10-18 16:00:00
 type: story
 categories: [前端]
-tags: ["vscode", "emmet", "快捷键"]
+tags: ["vscode", "Emmet", "快捷键"]
 ---
 
-在日常前端开发中，我们经常需要用一个新标签包裹已有的HTML代码块。比如在重构页面结构时，需要将一组元素放入新的容器标签中。然而，VSCode在这方面并不像WebStorm等JetBrains IDE那样提供开箱即用的标签包裹快捷键。
+在日常前端开发中，我们经常需要用一个新标签包裹已有的HTML代码块。比如需要将一组元素放入新的容器标签中。然而，VSCode并不像WebStorm那样提供开箱即用的标签包裹快捷键。
 
 ## 问题场景
 
@@ -47,9 +47,9 @@ VSCode内置了强大的Emmet功能，其中"Wrap with Abbreviation"就是专门
 
 ```json
 {
-  "key": "Ctrl+Shift+W",
+  "key": "Ctrl+Alt+T",
   "command": "editor.emmet.action.wrapWithAbbreviation",
 }
 ```
 
-快捷键`Ctrl+Shift+W`（Mac: `Cmd+Shift+W`），它与WebStorm的默认快捷键一致，你也可以改成喜欢的
+你也可以改成喜欢的

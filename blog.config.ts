@@ -10,7 +10,7 @@ const basicConfig = {
     'shenley的个人博客，分享技术与生活。shenley是一名前端初学者，结识了许多志同道合的朋友。这个博客记录了他在生活和技术学习中的点滴经历，充满启发与思考。网站界面简洁美观，内容丰富实用，人气互动活跃，涵盖了编程、生活、学习等多个领域，为读者提供了卓越的阅读体验。',
 	author: {
 		name: 'shenley',
-		avatar: 'https://blog.shenley.cn/avatar.jpg',
+		avatar: 'https://shenley.cn/avatar.jpg',
 		email: '582783985@qq.com',
 		homepage: 'https://shenley.cn',
 	},
@@ -23,7 +23,7 @@ const basicConfig = {
 	language: 'zh-CN',
 	timeEstablished: '2025-02-18',
 	timezone: 'Asia/Shanghai',
-	url: 'https://blog.shenley.cn/',
+	url: 'https://shenley.cn/',
 	defaultCategory: '未分类',
 }
 
