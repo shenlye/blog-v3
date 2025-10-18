@@ -45,6 +45,7 @@ function handleClick() {
 	overflow: hidden;
 	height: 180px;
 	border: 1px solid var(--c-border);
+	border-radius: 3px;
 	background-color: var(--c-bg-3);
 	color: var(--c-text-3);
 	transition: all 0.2s ease;

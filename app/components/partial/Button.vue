@@ -28,7 +28,7 @@ defineProps<ButtonProps>()
 	display: inline-block;
 	padding: 0.4em 0.6em;
 	border: 1px solid var(--c-bg-soft);
-	border-radius: 0.5em;
+	border-radius: 3px;
 	box-shadow: 0 2px 0.5em var(--ld-shadow);
 	background-color: var(--ld-bg-card);
 	line-height: 1.2;

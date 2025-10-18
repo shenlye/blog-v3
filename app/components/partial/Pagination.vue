@@ -51,7 +51,7 @@ const pageArr = computed(() => genPageArr(page.value, props.totalPages))
 
 	.pagination-button {
 		padding: 0.2em 0.5em;
-		border-radius: 0.5em;
+		border-radius: 3px;
 		transition: background-color 0.2s ease-in-out;
 		cursor: pointer;
 

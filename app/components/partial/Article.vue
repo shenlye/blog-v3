@@ -73,12 +73,13 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	position: relative;
 	border-top: 1px solid var(--c-border);
 	color: var(--c-text);
-	transition: border-color 0.3s ease;
-	animation: float-in 0.2s var(--delay) backwards;
+	transition: all 0.3s ease;
+	animation: float-in 0.8s var(--delay) backwards;
 
 	&:hover {
 		border-top-color: var(--c-primary);
 		box-shadow: 0 0.5em 1em var(--ld-shadow);
+		transform: translateY(-3px);
 
 		&::before {
 			content: "";
@@ -87,9 +88,9 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 			top: -4px;
 			right: 0;
 			left: 0;
-			height: 2em;
+			height: 1em;
 			background-color: var(--c-primary);
-			filter: blur(24px);
+			filter: blur(32px);
 			z-index: -1;
 		}
 
