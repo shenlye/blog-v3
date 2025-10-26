@@ -109,6 +109,7 @@
 		h1, h2, h3, h4, h5, h6, .title-like {
 			display: inline-block;
 			position: relative;
+			padding: 0 0 0 10px;
 			font-family: var(--font-serif);
 			font-weight: bolder;
 			text-align: start;
@@ -132,7 +133,7 @@
 			content: "";
 			position: absolute;
 			bottom: 3px;
-			left: 0px;
+			left: 0;
 			width: 80%;
 			height: 4px;
 			background-color: var(--c-primary);

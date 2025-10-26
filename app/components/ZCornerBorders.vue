@@ -42,7 +42,7 @@ defineProps<{
 	polyline {
 		fill: none;
 		stroke: v-bind('color || "var(--c-text-3)"');
-		stroke-width: v-bind('strokeWidth || "1"');
+		stroke-width: v-bind('strokeWidth || "2"');
 		stroke-linecap: square;
 		vector-effect: non-scaling-stroke;
 	}
