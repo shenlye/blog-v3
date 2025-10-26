@@ -23,7 +23,7 @@ const basicConfig = {
 	language: 'zh-CN',
 	timeEstablished: '2025-02-18',
 	timezone: 'Asia/Shanghai',
-	url: 'https://shenley.cn/',
+	url: 'https://blog.shenley.cn/',
 	defaultCategory: '未分类',
 }
 
