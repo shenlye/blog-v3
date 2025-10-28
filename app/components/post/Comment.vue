@@ -1,13 +1,13 @@
 <script setup lang="ts">
-// const appConfig = useAppConfig()
+const appConfig = useAppConfig()
 
-// onMounted(() => {
-// 	window.twikoo?.init({
-// 		envId: appConfig.twikoo?.envId,
-// 		// twikoo 会把挂载后的元素变为 #twikoo
-// 		el: '#twikoo',
-// 	})
-// })
+onMounted(() => {
+	window.twikoo?.init({
+		envId: appConfig.twikoo?.envId,
+		// twikoo 会把挂载后的元素变为 #twikoo
+		el: '#twikoo',
+	})
+})
 </script>
 
 <template>
@@ -16,7 +16,7 @@
 		评论区
 	</h3>
 	<div id="twikoo">
-		<p>评论加载中...(永远不会加载完成的)</p>
+		<p>评论加载中...</p>
 	</div>
 </section>
 </template>
