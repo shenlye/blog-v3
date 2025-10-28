@@ -9,11 +9,10 @@ export default [
 				title: '葱苓小筑',
 				author: '葱苓sama',
 				link: 'https://blog.ciraos.top',
-				avatar:
-          'https://mx.ciraos.top/api/v2/objects/avatar/ufh295h43mly31gmw0.avif',
+				avatar: 'https://blog.ciraos.top/api/f/RgeK/avatar1.avif',
 				desc: 'Don\'t worry, be happy.',
-				icon: 'https://mx.ciraos.top/api/v2/objects/avatar/ufh295h43mly31gmw0.avif',
-				archs: ['Next.js'],
+				icon: 'https://blog.ciraos.top/api/f/RgeK/avatar1.avif',
+				archs: ['Vue'],
 				date: '2025-04-17',
 			},
 			{
