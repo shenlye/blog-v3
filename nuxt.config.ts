@@ -54,7 +54,7 @@ export default defineNuxtConfig({
 				separator: '|',
 			},
 			titleTemplate: `%s %separator ${blogConfig.title}`,
-			// script: blogConfig.scripts,
+			script: blogConfig.scripts,
 		},
 		rootAttrs: {
 			id: 'z-root',
