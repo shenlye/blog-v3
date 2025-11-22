@@ -129,7 +129,6 @@ export default defineNuxtConfig({
 		'@nuxt/image',
 		'@nuxtjs/color-mode',
 		'@nuxtjs/seo',
-		'@nuxtjs/supabase',
 		'@pinia/nuxt',
 		'@vueuse/nuxt',
 		'unplugin-yaml/nuxt',
@@ -201,8 +200,5 @@ export default defineNuxtConfig({
 		name: blogConfig.title,
 		url: blogConfig.url,
 		defaultLocale: blogConfig.language,
-	},
-	supabase: {
-		redirect: false,
 	},
 })
