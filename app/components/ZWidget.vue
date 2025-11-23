@@ -11,7 +11,7 @@ defineProps<{
 <template>
 <section class="widget" :class="{ dim }">
 	<div class="widget-body" :class="{ 'widget-card': card, 'with-bg': bgImg }">
-		<NuxtImg v-if="bgImg" class="bg-img" :class="{ 'bg-right': bgRight }" :src="bgImg" alt="" />
+		<NuxtImg v-if="bgImg" class="bg-img" :class="{ 'bg-right': bgRight }" :src="bgImg" alt="" loading="lazy" />
 		<ZCornerBorders />
 
 		<hgroup class="widget-title text-creative">

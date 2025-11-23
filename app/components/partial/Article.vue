@@ -14,7 +14,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 
 <template>
 <ZRawLink class="article-card card">
-	<NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" />
+	<NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" loading="lazy" />
 	<article>
 		<div class="article-info" data-allow-mismatch>
 			<!-- 带查询参数时会水合错误 -->
