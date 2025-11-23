@@ -49,6 +49,10 @@ export default defineNuxtConfig({
 					rel: 'stylesheet',
 					href: 'https://cdn-font.hyperos.mi.com/font/css?family=MiSans:100,200,300,400,450,500,600,650,700,900:Chinese_Simplify,Latin&display=swap',
 				},
+				{
+					rel: 'stylesheet',
+					href: 'https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;800&display=swap',
+				},
 			],
 			templateParams: {
 				separator: '|',

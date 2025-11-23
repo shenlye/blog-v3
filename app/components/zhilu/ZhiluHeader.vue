@@ -53,11 +53,6 @@ const appConfig = useAppConfig()
 	user-select: none;
 }
 
-@font-face {
-	font-family: AlimamaFangYuanTi;
-	src: url("/fonts/AlimamaFangYuanTi.woff2");
-}
-
 .header-title {
 	&::before {
 		content: "";
@@ -69,7 +64,7 @@ const appConfig = useAppConfig()
 		z-index: -1;
 	}
 
-	font-family: AlimamaFangYuanTi, "Noto Sans SC", sans-serif;
+	font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
 	font-size: 1.5em;
 	font-synthesis: none;
 	font-variation-settings: "wght" 600, "BEVL" 100;

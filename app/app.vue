@@ -18,7 +18,6 @@
 // Nuxt 根元素 id
 #z-root {
 	display: flex;
-	justify-content: center;
 	gap: 1rem;
 	min-width: 0;
 }
@@ -28,9 +27,10 @@ aside {
 	flex-shrink: 0;
 	position: sticky;
 	top: 0;
-	width: 280px;
+	width: 300px;
 	height: 100vh;
 	height: 100dvh;
+	font-family: "Chakra Petch", var(--font-creative);
 	scrollbar-width: thin;
 
 	@media (max-width: $breakpoint-widescreen) {
@@ -46,6 +46,7 @@ aside {
 	// 此时即使设置 flex-grow，也会影响 #sidebar 无法正确 shrink
 	width: $breakpoint-widescreen;
 	min-width: 0; // 解决父级 flexbox 设置 justify-content: center 时溢出左侧消失的问题
+	margin: 0 auto;
 
 	// 此处不建议给内容设置 padding
 	> main {

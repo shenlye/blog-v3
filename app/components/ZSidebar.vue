@@ -54,6 +54,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 #z-sidebar {
 	display: flex;
 	flex-direction: column;
+	border-right: 1px solid var(--c-border);
 	color: var(--c-text-2);
 
 	&:hover {
@@ -99,6 +100,8 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 .sidebar-nav {
 	flex-grow: 1;
 	padding: 0 5%;
+	border-top: 1px solid var(--c-border);
+	border-bottom: 1px solid var(--c-border);
 	font-size: 0.9em;
 
 	h3 {

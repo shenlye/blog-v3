@@ -71,32 +71,25 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 .article-card {
 	container-type: inline-size;
 	position: relative;
-	border-top: 1px solid var(--c-border);
+	margin-bottom: 1rem;
+	border: 1px solid var(--c-border);
+	border-left: 4px solid var(--c-border);
 	color: var(--c-text);
 	transition: all 0.3s ease;
 	animation: float-in 0.8s var(--delay) backwards;
 
 	&:hover {
-		border-top-color: var(--c-primary);
+		border-left-color: var(--c-primary);
 		box-shadow: 0 0.5em 1em var(--ld-shadow);
-		transform: translateY(-3px);
-
-		&::before {
-			content: "";
-			position: absolute;
-			opacity: 0.5;
-			top: -4px;
-			right: 0;
-			left: 0;
-			height: 1em;
-			background-color: var(--c-primary);
-			filter: blur(32px);
-			z-index: -1;
-		}
+		transform: translateX(3px);
 
 		.article-category {
 			background-color: var(--c-primary);
 			color: var(--c-bg);
+		}
+
+		.article-title {
+			color: var(--c-primary);
 		}
 	}
 

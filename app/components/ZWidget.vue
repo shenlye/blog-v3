@@ -10,15 +10,17 @@ defineProps<{
 
 <template>
 <section class="widget" :class="{ dim }">
-	<hgroup class="widget-title text-creative">
-		<slot name="title">
-			{{ title }}
-		</slot>
-	</hgroup>
-
 	<div class="widget-body" :class="{ 'widget-card': card, 'with-bg': bgImg }">
 		<NuxtImg v-if="bgImg" class="bg-img" :class="{ 'bg-right': bgRight }" :src="bgImg" alt="" />
 		<ZCornerBorders />
+
+		<hgroup class="widget-title text-creative">
+			<slot name="title">
+				{{ title }}
+			</slot>
+			<span class="title-line" />
+		</hgroup>
+
 		<slot />
 	</div>
 </section>
@@ -26,6 +28,7 @@ defineProps<{
 
 <style lang="scss" scoped>
 .widget {
+	font-family: "Chakra Petch", var(--font-basic);
 	font-size: 0.9em;
 
 	& + .widget {
@@ -45,9 +48,8 @@ defineProps<{
 .widget-title {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	gap: 0.5rem;
-	margin: 0.5rem;
+	margin-bottom: 0.8rem;
 	color: var(--c-text-2);
 
 	a {
@@ -56,6 +58,12 @@ defineProps<{
 
 	> [onclick]:hover, > [href]:hover {
 		color: var(--c-primary);
+	}
+
+	.title-line {
+		flex: 1;
+		height: 1px;
+		background: var(--c-border);
 	}
 }
 
