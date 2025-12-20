@@ -60,6 +60,15 @@ export default [
 				feed: 'https://blog.zhilu.cyou/atom.xml',
 				comment: '此博客主题的开发者',
 			},
+			{
+				title: 'Jax`Mu',
+				link: 'https://jaxmu.com/',
+				avatar: 'https://jaxmu.com/jaxmu.png',
+				desc: '好好学习，天天向上',
+				author: 'Jax`Mu',
+				icon: 'https://jaxmu.com/jaxmu.png',
+				date: '2025-12-20',
+			},
 		],
 	},
 ] satisfies FeedGroup[]
