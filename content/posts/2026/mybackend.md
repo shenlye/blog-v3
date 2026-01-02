@@ -127,6 +127,31 @@ if (!foundUser || !isMatch) {
 
 这段代码准备了一个假的hash，即便没查到人，也会执行一遍verify，这下无论对比谁，消耗的时间就都一样了
 
+### 顶层执行
+
+```ts
+export const authMiddleware = createMiddleware(
+    async (c: Context, next: Next) => {
+        const jwtSecret = process.env.JWT_SECRET;
+        if (!jwtSecret) {
+            return c.json({ error: "Internal server error" }, 500);
+        }
+
+        const jwtMiddleware = jwt({
+            secret: jwtSecret,
+        });
+
+        try {
+            return await jwtMiddleware(c, next);
+        } catch {
+            return c.json({ error: "Unauthorized" }, 401);
+        }
+    },
+);
+```
+
+这样一段代码中，每当有请求进来`const jwtMiddleware = jwt({ secret: jwtSecret });`这里都要 new 一个对象，虽然这个开销极小，但是应该放在外面，全局复用。啊，原来当我`import`时，不只是读取并且存起来导出的东西，他会先执行一段顶层的代码，这个我才知道，学到了
+
 （待续）
 
 虽然仓库还很简陋，虽然代码都没什么难点，虽然我还在填以前的坑，但至少每一行代码都是我亲自敲出来的（tab也算的话）。这种对代码的掌控感，是任何 AI Agent 都无法提供的温存。
