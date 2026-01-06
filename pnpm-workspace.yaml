@@ -1,10 +1,18 @@
+catalog:
+  '@nuxtjs/supabase': ^2.0.0
+  '@types/better-sqlite3': ^7.6.13
+  drizzle-orm: ^0.45.1
+  gray-matter: ^4.0.3
+  sqlite: ^5.1.1
+  sqlite3: ^5.1.7
+
 catalogs:
   content:
     '@nuxt/content': ^3.6.3
     '@nuxtjs/seo': ^3.1.0
     '@shikijs/colorized-brackets': ^3.12.2
     '@shikijs/transformers': ^3.12.2
-    better-sqlite3: ^12.2.0
+    better-sqlite3: catalog:content
     plain-shiki: ^0.3.0
     rehype-katex: ^7.0.1
     remark-math: ^6.0.0
@@ -59,6 +67,7 @@ onlyBuiltDependencies:
   - oxc-resolver
   - rolldown
   - sharp
+  - sqlite3
   - unrs-resolver
 
 overrides:
@@ -70,5 +79,3 @@ patchedDependencies:
   vue-tippy: patches/vue-tippy.patch
 
 shamefullyHoist: true
-catalog:
-  '@nuxtjs/supabase': ^2.0.0

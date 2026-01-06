@@ -72,8 +72,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	container-type: inline-size;
 	position: relative;
 	margin-bottom: 1rem;
-	border: 1px solid var(--c-border);
-	border-left: 4px solid var(--c-border);
+	border-top: 1px solid var(--c-border);
 	color: var(--c-text);
 	transition: all 0.3s ease;
 	animation: float-in 0.8s var(--delay) backwards;
@@ -81,7 +80,6 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	&:hover {
 		border-left-color: var(--c-primary);
 		box-shadow: 0 0.5em 1em var(--ld-shadow);
-		transform: translateX(3px);
 
 		.article-category {
 			background-color: var(--c-primary);
@@ -97,7 +95,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-		padding: 1rem;
+		padding: 0.8rem;
 	}
 }
 
