@@ -2,18 +2,33 @@ import type ArticleProps from '~/types/article'
 import type { ArticleOrderType } from '~/types/article'
 import { alphabetical } from 'radash'
 
-export function useArticleIndex(path = 'posts/%', showHidden: MaybeRefOrGetter<boolean> = false) {
+export interface ArticleIndexOptions {
+	path?: string
+	showHidden?: MaybeRefOrGetter<boolean>
+	page?: MaybeRefOrGetter<number>
+	limit?: MaybeRefOrGetter<number>
+}
+
+export function useArticleIndex(
+	pathOrOptions: string | ArticleIndexOptions = 'posts/%',
+	maybeShowHidden: MaybeRefOrGetter<boolean> = false,
+) {
+	const path = typeof pathOrOptions === 'string' ? pathOrOptions : (pathOrOptions.path || 'posts/%')
+	const showHidden = typeof pathOrOptions === 'string' ? maybeShowHidden : (pathOrOptions.showHidden || false)
+	const page = typeof pathOrOptions === 'string' ? 1 : (pathOrOptions.page || 1)
+	const limit = typeof pathOrOptions === 'string' ? 1000 : (pathOrOptions.limit || 10)
+
 	const config = useRuntimeConfig()
 	return useAsyncData(
-		() => `index_${path}_${toValue(showHidden)}`,
+		() => `index_${path}_${toValue(showHidden)}_${toValue(page)}_${toValue(limit)}`,
 		async () => {
 			const baseUrl = config.public.apiBase.endsWith('/')
 				? config.public.apiBase.slice(0, -1)
 				: config.public.apiBase
 			const response = await $fetch<any>(`${baseUrl}/api/v1/posts`, {
 				query: {
-					page: '1',
-					limit: '10',
+					page: toValue(page).toString(),
+					limit: toValue(limit).toString(),
 				},
 			})
 			const list = (response.data || []).map((post: any) => {
@@ -32,21 +47,24 @@ export function useArticleIndex(path = 'posts/%', showHidden: MaybeRefOrGetter<b
 					categories: post.categories || [],
 					tags: post.tags || [],
 					recommend: post.recommend || 0,
-				}
+				} as ArticleProps
 			})
-
-			// 对于新 API 的文章列表，我们通常可以直接返回全部（由后端过滤）
-			if (path.startsWith('posts'))
-				return list
 
 			// 模拟 SQL LIKE (仅用于非文章列表，如 previews%)
 			const pattern = path.replace(/%/g, '.*')
 			const regex = new RegExp(`^${pattern}$`, 'i')
-			return list.filter((item: any) => regex.test(item.slug.replace(/^\//, '')))
+			const filteredList = path.startsWith('posts')
+				? list
+				: list.filter((item: any) => regex.test(item.slug.replace(/^\//, '')))
+
+			return {
+				list: filteredList,
+				total: response.total || response.pagination?.total || response.meta?.total || filteredList.length,
+			}
 		},
 		{
-			default: () => [],
-			watch: [() => toValue(showHidden)],
+			default: () => ({ list: [], total: 0 }),
+			watch: [() => toValue(showHidden), () => toValue(page), () => toValue(limit)],
 		},
 	)
 }

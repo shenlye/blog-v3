@@ -14,10 +14,24 @@ layoutStore.setAside(['blog-stats', 'blog-tech'])
 // 此处数据源不采用默认参数，以防归档页面刷新空白
 const hiddenToggleRef = ref()
 const showHidden = computed(() => hiddenToggleRef.value?.showHidden)
-const { data: listRaw } = await useArticleIndex('posts%', showHidden)
+
+const page = useRouteQuery('page', '1', { transform: Number, mode: 'push' })
+
+const { data: indexData } = await useArticleIndex({
+	path: 'posts%',
+	showHidden,
+	page,
+	limit: appConfig.pagination.perPage || 10,
+})
+const listRaw = computed(() => indexData.value?.list || [])
+const total = computed(() => indexData.value?.total || 0)
+
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted, { bindQuery: 'category' })
-const { page, totalPages, listPaged } = usePagination(listCategorized, { bindQuery: 'page' })
+const { totalPages, listPaged } = usePagination(listCategorized, {
+	page,
+	total,
+})
 
 watch(category, () => {
 	page.value = 1

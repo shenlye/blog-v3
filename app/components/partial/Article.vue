@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type ArticleProps from '~/types/article'
+import { format } from 'date-fns'
 
 const props = defineProps<{ useUpdated?: boolean } & ArticleProps>()
 
@@ -10,6 +11,14 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 const categoryLabel = computed(() => props.categories?.[0])
 const categoryColor = computed(() => appConfig.article.categories[categoryLabel.value!]?.color)
 const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
+
+const displayTitle = computed(() => {
+	if (props.title)
+		return props.title
+	if (props.date)
+		return format(new Date(props.date), 'yyyy-MM-dd HH:mm:ss')
+	return ''
+})
 </script>
 
 <template>
@@ -57,7 +66,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 		</div>
 
 		<h2 class="article-title text-creative">
-			{{ title }}
+			{{ displayTitle }}
 		</h2>
 
 		<p v-if="description" class="article-descrption">

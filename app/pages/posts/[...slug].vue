@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { format } from 'date-fns'
+
 const route = useRoute()
 const layoutStore = useLayoutStore()
 const config = useRuntimeConfig()
@@ -11,7 +13,7 @@ const slug = computed(() => {
 
 const baseUrl = config.public.apiBase.replace(/\/$/, '')
 
-const { data: post, error } = await useAsyncData(
+const { data: post } = await useAsyncData(
 	() => $fetch(`${baseUrl}/api/v1/posts/${slug.value}`),
 	{
 		watch: [slug],
@@ -30,10 +32,18 @@ const { data: post, error } = await useAsyncData(
 	},
 )
 
+const displayTitle = computed(() => {
+	if (post.value?.title)
+		return post.value.title
+	if (post.value?.date)
+		return format(new Date(post.value.date), 'yyyy-MM-dd HH:mm:ss')
+	return '加载中...'
+})
+
 // 3. SEO 应该直接基于 post 数据（不需要在 watch 里）
 // Nuxt 会自动处理这里的响应式
 useSeoMeta({
-	title: () => post.value?.title || '加载中...',
+	title: () => displayTitle.value,
 	ogType: 'article',
 	ogImage: () => post.value?.image,
 	description: () => post.value?.description,
@@ -52,7 +62,7 @@ const excerpt = computed(() => post.value?.description || '')
 
 <template>
 <template v-if="post">
-	<PostHeader v-bind="post" />
+	<PostHeader v-bind="post" :title="displayTitle" />
 	<PostExcerpt v-if="excerpt" :excerpt />
 	<!--
 	<Alert type="warning" icon="ph:eye-slash-bold" title="隐藏文章" v-if="post.hidden">
