@@ -273,6 +273,9 @@ importers:
       '@iconify-json/ph':
         specifier: catalog:ui
         version: 1.2.2
+      '@resvg/resvg-js-linux-x64-musl':
+        specifier: ^2.6.2
+        version: 2.6.2
       '@types/better-sqlite3':
         specifier: ^7.6.13
         version: 7.6.13
@@ -8996,8 +8999,7 @@ snapshots:
   '@resvg/resvg-js-linux-x64-gnu@2.6.2':
     optional: true
 
-  '@resvg/resvg-js-linux-x64-musl@2.6.2':
-    optional: true
+  '@resvg/resvg-js-linux-x64-musl@2.6.2': {}
 
   '@resvg/resvg-js-win32-arm64-msvc@2.6.2':
     optional: true

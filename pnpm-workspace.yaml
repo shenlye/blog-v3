@@ -1,5 +1,6 @@
 catalog:
   '@nuxtjs/supabase': ^2.0.0
+  '@resvg/resvg-js-linux-x64-musl': ^2.6.2
   '@types/better-sqlite3': ^7.6.13
   drizzle-orm: ^0.45.1
   gray-matter: ^4.0.3

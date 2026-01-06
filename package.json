@@ -56,6 +56,7 @@
     "@clack/prompts": "catalog:util",
     "@iconify-json/catppuccin": "catalog:ui",
     "@iconify-json/ph": "catalog:ui",
+    "@resvg/resvg-js-linux-x64-musl": "^2.6.2",
     "@types/better-sqlite3": "^7.6.13",
     "@zinkawaii/stylelint-config": "catalog:quality",
     "cross-env": "catalog:framework",
