@@ -18,9 +18,6 @@ catalogs:
     '@shikijs/transformers':
       specifier: ^3.12.2
       version: 3.12.2
-    better-sqlite3:
-      specifier: catalog:content
-      version: 12.2.0
     plain-shiki:
       specifier: ^0.3.0
       version: 0.3.0
@@ -248,9 +245,6 @@ importers:
       shiki:
         specifier: catalog:content
         version: 3.12.2
-      sqlite:
-        specifier: ^5.1.1
-        version: 5.1.1
       sqlite3:
         specifier: ^5.1.7
         version: 5.1.7
@@ -285,9 +279,6 @@ importers:
       '@zinkawaii/stylelint-config':
         specifier: catalog:quality
         version: 0.3.3(postcss-html@1.8.0)(postcss@8.5.6)(stylelint@16.23.1(typescript@5.9.2))
-      better-sqlite3:
-        specifier: catalog:content
-        version: 12.2.0
       cross-env:
         specifier: catalog:framework
         version: 10.0.0
@@ -6459,9 +6450,6 @@ packages:
   sqlite3@5.1.7:
     resolution: {integrity: sha512-GGIyOiFaG+TUra3JIfkI/zGP8yZYLPQ0pl1bH+ODjiX57sPhrLU5sQJn1y9bDKZUFYkX1crlrPfSYt0BKKdkog==}
 
-  sqlite@5.1.1:
-    resolution: {integrity: sha512-oBkezXa2hnkfuJwUo44Hl9hS3er+YFtueifoajrgidvqsJRQFpc5fKoAkAor1O5ZnLoa28GBScfHXs8j0K358Q==}
-
   ssri@8.0.1:
     resolution: {integrity: sha512-97qShzy1AiyxvPNIkLWoGua7xoQzzPjQ0HAH4B0rWKo7SZ6USuPcrUiAFrws0UH8RrbWmgq3LMTObhPIHbbBeQ==}
     engines: {node: '>= 8'}
@@ -10058,6 +10046,7 @@ snapshots:
     dependencies:
       bindings: 1.5.0
       prebuild-install: 7.1.3
+    optional: true
 
   bindings@1.5.0:
     dependencies:
@@ -14642,8 +14631,6 @@ snapshots:
     transitivePeerDependencies:
       - bluebird
       - supports-color
-
-  sqlite@5.1.1: {}
 
   ssri@8.0.1:
     dependencies:
