@@ -34,9 +34,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 						<Icon :name="item.icon" />
 						<span class="nav-text">{{ item.text }}</span>
 						<Icon v-if="isExtLink(item.url)" class="external-tip" name="ph:arrow-up-right" />
-						<div class="square-grid">
-							<div v-for="i in 16" :key="i" class="square" />
-						</div>
+						<div class="square-grid" />
 					</ZRawLink>
 				</li>
 			</menu>
@@ -165,6 +163,10 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 			filter: blur(10px);
 			z-index: -1;
 		}
+
+		.square-grid {
+			color: var(--c-primary);
+		}
 	}
 
 	.iconify {
@@ -181,20 +183,19 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 	}
 
 	.square-grid {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		grid-template-rows: repeat(4, 1fr);
-		gap: 1px;
 		position: absolute;
-		top: 8px;
-		right: 8px;
-		width: 7px;
-		height: 7px;
-	}
-
-	.square {
-		background-color: var(--c-text-3);
-		transition: background-color 0.2s ease;
+		top: 6px;
+		right: 11px;
+		width: 1px;
+		height: 1px;
+		color: var(--c-text-3);
+		background-color: currentColor;
+		box-shadow:
+			2px 0, 4px 0, 6px 0,
+			0 2px, 2px 2px, 4px 2px, 6px 2px,
+			0 4px, 2px 4px, 4px 4px, 6px 4px,
+			0 6px, 2px 6px, 4px 6px, 6px 6px;
+		transition: color 0.2s;
 	}
 }
 
