@@ -1,3 +1,4 @@
+import type { NitroConfig } from 'nitropack'
 import process from 'node:process'
 import ci from 'ci-info'
 import blogConfig from './blog.config'
@@ -104,7 +105,6 @@ export default defineNuxtConfig({
 
 	runtimeConfig: {
 		public: {
-			apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://127.0.0.1:3000',
 			buildTime: new Date().toISOString(),
 			nodeVersion: process.version,
 			platform: process.platform,
@@ -132,7 +132,6 @@ export default defineNuxtConfig({
 		'@nuxt/icon',
 		'@nuxt/image',
 		'@nuxtjs/color-mode',
-		'@nuxtjs/mdc',
 		'@nuxtjs/seo',
 		'@pinia/nuxt',
 		'@vueuse/nuxt',

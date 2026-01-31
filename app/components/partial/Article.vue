@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type ArticleProps from '~/types/article'
-import { format } from 'date-fns'
 
 const props = defineProps<{ useUpdated?: boolean } & ArticleProps>()
 
@@ -11,14 +10,6 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 const categoryLabel = computed(() => props.categories?.[0])
 const categoryColor = computed(() => appConfig.article.categories[categoryLabel.value!]?.color)
 const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
-
-const displayTitle = computed(() => {
-	if (props.title)
-		return props.title
-	if (props.date)
-		return format(new Date(props.date), 'yyyy-MM-dd HH:mm:ss')
-	return ''
-})
 </script>
 
 <template>
@@ -66,7 +57,7 @@ const displayTitle = computed(() => {
 		</div>
 
 		<h2 class="article-title text-creative">
-			{{ displayTitle }}
+			{{ title }}
 		</h2>
 
 		<p v-if="description" class="article-descrption">
@@ -81,7 +72,8 @@ const displayTitle = computed(() => {
 	container-type: inline-size;
 	position: relative;
 	margin-bottom: 1rem;
-	border-top: 1px solid var(--c-border);
+	border: 1px solid var(--c-border);
+	border-left: 4px solid var(--c-border);
 	color: var(--c-text);
 	transition: all 0.3s ease;
 	animation: float-in 0.8s var(--delay) backwards;
@@ -89,6 +81,7 @@ const displayTitle = computed(() => {
 	&:hover {
 		border-left-color: var(--c-primary);
 		box-shadow: 0 0.5em 1em var(--ld-shadow);
+		transform: translateX(3px);
 
 		.article-category {
 			background-color: var(--c-primary);
@@ -104,7 +97,7 @@ const displayTitle = computed(() => {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-		padding: 0.8rem;
+		padding: 1rem;
 	}
 }
 

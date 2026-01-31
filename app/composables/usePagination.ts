@@ -2,8 +2,6 @@ interface UsePaginationOptions {
 	initialPage?: number
 	perPage?: number
 	bindQuery?: string | false
-	total?: MaybeRefOrGetter<number>
-	page?: Ref<number>
 }
 
 export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: UsePaginationOptions) {
@@ -12,32 +10,22 @@ export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: 
 		initialPage = 1,
 		perPage = appConfig.pagination.perPage || 10,
 		bindQuery = false,
-		total,
-		page: customPage,
 	} = options ?? {}
 
-	const totalPages = computed(() => {
-		const totalCount = total !== undefined ? toValue(total) : toValue(list).length
-		return Math.ceil(totalCount / perPage) || initialPage
-	})
+	const totalPages = computed(() => Math.ceil(toValue(list).length / perPage) || initialPage)
 
 	function transformPage(val: string) {
-		const pageNum = Number(val)
-		return pageNum >= 1 && pageNum <= totalPages.value ? pageNum : initialPage
+		const page = Number(val)
+		return page >= 1 && page <= totalPages.value ? page : initialPage
 	}
 
-	const page = customPage || (bindQuery
+	const page = bindQuery
 		? useRouteQuery(bindQuery, initialPage.toString(), { transform: transformPage, mode: 'push' })
-		: ref(initialPage)) as Ref<number>
+		: ref(initialPage)
 
 	const listPaged = computed(() => {
-		const l = toValue(list)
-		// 如果提供了外部 total，说明后端已经做了分页，直接返回即可
-		if (total !== undefined)
-			return l
-
 		const start = (page.value - 1) * perPage
-		return l.slice(start, start + perPage)
+		return toValue(list).slice(start, start + perPage)
 	})
 
 	// 不应在此处 watch list

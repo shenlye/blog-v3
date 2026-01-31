@@ -4,10 +4,10 @@ useSeoMeta({
 	title: '预览',
 	description: `${appConfig.title}的文章预览。`,
 })
+const layoutStore = useLayoutStore()
+layoutStore.setAside(['blog-log'])
 
-const { data: indexData } = useArticleIndex('previews/%')
-const listRaw = computed(() => indexData.value?.list || [])
-
+const { data: listRaw } = useArticleIndex('previews/%')
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted)
 </script>

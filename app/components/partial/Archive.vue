@@ -14,14 +14,6 @@ const dateLabel = computed(() => mainDate.value
 const auxDateLabel = computed(() => props.date
 	? format(new Date(props.date), isSameYear(props.updated, props.date) ? 'MM-dd' : 'yyyy-MM-dd')
 	: '')
-
-const displayTitle = computed(() => {
-	if (props.title)
-		return props.title
-	if (props.date)
-		return format(new Date(props.date), 'yyyy-MM-dd HH:mm:ss')
-	return ''
-})
 </script>
 
 <template>
@@ -29,7 +21,7 @@ const displayTitle = computed(() => {
 	<time :datetime="getLocaleDatetime(mainDate)" :title="getLocaleDatetime(mainDate)">{{ dateLabel }}</time>
 	<ZRawLink class="article-link gradient-card" :to :title="description">
 		<span class="article-title">
-			{{ displayTitle }}
+			{{ title }}
 		</span>
 		<time v-if="useUpdated && isTimeDiffSignificant(date, updated)" class="aux-date" :datetime="getLocaleDatetime(date)" :title="getLocaleDatetime(date)">
 			&nbsp;{{ auxDateLabel }}</time>

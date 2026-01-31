@@ -28,11 +28,8 @@ const listGrouped = computed(() => {
 // 不能使用 /api/stats，因为可能切换分组方式
 const yearlyWordCount = computed(() => {
 	return listGrouped.value.reduce<Record<string, string>>((acc, [year, yearGroup]) => {
-		/* Commented out word count as readingTime is gone
 		const totalWords = yearGroup?.reduce((sum, cur) => sum + cur.readingTime!.words, 0) || 0
 		acc[year] = formatNumber(totalWords)
-		*/
-		acc[year] = '0'
 		return acc
 	}, {})
 })
@@ -142,4 +139,6 @@ const yearlyWordCount = computed(() => {
 		column-gap: 0.5em;
 	}
 }
+
+
 </style>
