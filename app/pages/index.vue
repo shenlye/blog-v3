@@ -8,14 +8,15 @@ useSeoMeta({
 })
 
 const layoutStore = useLayoutStore()
-layoutStore.setAside(['blog-stats', 'blog-tech'])
+layoutStore.setAside(['blog-stats', 'blog-tech', 'notice'])
 
 // BUG 若其他页面和 index.vue 共用同一数据源，其 payload 会被置空
 // 此处数据源不采用默认参数，以防归档页面刷新空白
 const hiddenToggleRef = ref()
 const showHidden = computed(() => hiddenToggleRef.value?.showHidden)
 const { data: listRaw } = await useArticleIndex('posts%', showHidden)
-const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
+const listFiltered = computed(() => listRaw.value.filter(item => item.date >= '2026-03-02'))
+const { listSorted, isAscending, sortOrder } = useArticleSort(listFiltered)
 const { category, categories, listCategorized } = useCategory(listSorted, { bindQuery: 'category' })
 const { page, totalPages, listPaged } = usePagination(listCategorized, { bindQuery: 'page' })
 
@@ -30,7 +31,7 @@ watch(showHidden, () => {
 useSeoMeta({ title: () => (page.value > 1 ? `第${page.value}页` : '') })
 
 const listRecommended = computed(() => sort(
-	listRaw.value.filter(item => item?.recommend),
+	listFiltered.value.filter(item => item?.recommend),
 	post => post.recommend || 0,
 	true,
 ))
