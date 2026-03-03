@@ -11,8 +11,8 @@
 	--c-border: hsl(var(--hue-theme) 10% 23%);
 	--c-bg-a50: hsl(var(--hue-theme) 10% 10% / 50%);
 	--c-bg-a80: hsl(var(--hue-theme) 10% 10% / 80%);
-	--c-primary: hsl(var(--hue-theme) 100% 70%);
-	--c-primary-soft: hsl(var(--hue-theme) 100% 60% / 20%);
+	--c-primary: lch(82.14% 37.86 144.33deg);
+	--c-primary-soft: lch(82.14% 37.86 144.33deg / 20%);
 	--ld-bg-blur: var(--c-bg-a80);
 	--ld-bg-card: var(--c-bg-3);
 	--ld-bg-active: var(--c-primary-soft);
@@ -34,8 +34,8 @@
 	--c-border: hsl(var(--hue-theme) 10% 91%);
 	--c-bg-a50: hsl(var(--hue-theme) 20% 98% / 50%);
 	--c-bg-a80: hsl(var(--hue-theme) 20% 98% / 80%);
-	--c-primary: hsl(var(--hue-theme) 100% 55%);
-	--c-primary-soft: hsl(var(--hue-theme) 100% 60% / 15%);
+	--c-primary: lch(82.14% 37.86 144.33deg);
+	--c-primary-soft: lch(82.14% 37.86 144.33deg / 15%);
 	--c-accent: hsl(180deg 70% 60%);
 	--ld-bg-blur: var(--c-bg-1);
 	--ld-bg-card: var(--c-bg);

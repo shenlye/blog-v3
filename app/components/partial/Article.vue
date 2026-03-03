@@ -81,7 +81,6 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	&:hover {
 		border-left-color: var(--c-primary);
 		box-shadow: 0 0.5em 1em var(--ld-shadow);
-		transform: translateX(3px);
 
 		.article-category {
 			background-color: var(--c-primary);
