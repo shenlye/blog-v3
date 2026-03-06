@@ -42,6 +42,7 @@
     "parse-domain": "catalog:util",
     "plain-shiki": "catalog:content",
     "radash": "catalog:util",
+    "sandpack-vue3": "^3.1.12",
     "shiki": "catalog:content",
     "vue": "catalog:framework",
     "vue-router": "catalog:framework",
