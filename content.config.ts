@@ -31,7 +31,9 @@ const articleSchema = z.object({
 
 export const collections = {
 	content: defineCollection(asSitemapCollection({
-		source: '**',
+		source: {
+			include: '**/*.md',
+		},
 		type: 'page',
 		schema: articleSchema,
 	})),
