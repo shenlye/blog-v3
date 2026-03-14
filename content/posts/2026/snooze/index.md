@@ -1,6 +1,6 @@
 ---
-title: "你好世界"
-description: "为什么要有简介这个东西，直接取正文前几十个字不就好了，以后实现"
+title: "周总结：开学第一周"
+description: ""
 date: 2026-03-02
 updated: 2026-03-07
 type: story

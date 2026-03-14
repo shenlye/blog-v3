@@ -1,11 +1,12 @@
 ---
-title: "本周：我的家在哪里"
+title: "周总结：我的家在哪里"
 description: ""
 date: 2026-03-14
 updated: 2026-03-14
 type: story
 categories: []
 tags: []
+image: https://img.shenley.top/blog/2026/weekly-1/wallhaven-ymzgdg_1920x1080.png
 ---
 
 ## 计划落空
