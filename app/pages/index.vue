@@ -46,7 +46,7 @@ const listRecommended = computed(() => sort(
 <PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />
 
 <div class="post-list">
-	<div class="toolbar">
+	<!-- <div class="toolbar">
 		<div>
 			<WidgetHiddenToggle ref="hiddenToggleRef" />
 		</div>
@@ -57,9 +57,9 @@ const listRecommended = computed(() => sort(
 			v-model:category="category"
 			:categories
 		/>
-	</div>
+	</div> -->
 
-	<TransitionGroup name="float-in">
+	<!-- <TransitionGroup name="float-in">
 		<ZArticle
 			v-for="article, index in listPaged"
 			:key="article.path"
@@ -70,7 +70,11 @@ const listRecommended = computed(() => sort(
 		/>
 	</TransitionGroup>
 
-	<ZPagination v-model="page" :total-pages />
+	<ZPagination v-model="page" :total-pages /> -->
+
+	<div style="text-align: center; padding: 4rem 0; color: var(--c-text-2);">
+		我去好好生活了，为了避免误伤本人，这里关了
+	</div>
 </div>
 </template>
 
